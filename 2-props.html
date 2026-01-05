@@ -16,13 +16,41 @@
 
                 
     <script type="text/babel">
+
+        const buttonVariants = {
+            default: "bg-blue-500",
+            primary: "bg-green-500",
+        }
+
+        function Button({variant = "default", className, children, ...props}){
+            return (
+                <button className={` 
+                        text-white py-3 px-4 rounded
+                        ${buttonVariants[variant]} 
+                        ${className || ''}
+                    `}
+                    {...props}
+                    >
+
+                    {children}
+                </button>
+            )
+        }
+
+        function App(){
+            return (
+                <main className="flex gap-2 p-3">
+                    <Button title="Button 1" variant="default" type="button" className="mr-15">Button 1</Button>
+                    <Button title="Button 2" variant="primary">Button 2</Button>
+                </main>
+            )
+
+        }
+
         ReactDOM.createRoot(document.getElementById('root')).render(
-            <React.Fragment>
-                <h1 className="text-3xl font-bold underline p-4">
-                    Study of React core concepts!
-                </h1>
-            </React.Fragment>
+            <App/>
         )                         
+        
     </script>
     
 </body>
