@@ -38,7 +38,7 @@
 
 </head>
 
-<body class="text-(--text) font-(--font-sans)">
+<body class="bg-linear-[180deg,_#807ECE_0%,_#807ECE_100%] min-h-screen text-(--text) font-(--font-sans)">
     <div id="root"></div>
     
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
@@ -144,6 +144,30 @@
           )
         }
 
+        /* ----------------OPERATION HISTORY---------------- */
+
+        function OperationHistory ({children, className, ...props}){
+          return (
+            <Card className="w-full py-10 px-8">
+              <Text 
+              as="h1"
+              variant="heading"
+              className="mb-4"
+              >
+              Histórico de Operações
+              </Text>
+
+              <ul className="flex flex-col gap-3">
+                <Text as="li" >1 + 1 = 2</Text>
+                <Text as="li" >1 + 1 = 2</Text>
+                <Text as="li" >1 + 1 = 2</Text>
+              </ul>
+            
+            </Card>
+          )
+        }
+
+
         /* ----------------CALCULATOR---------------- */
 
         function Calculator ({children, className, ...props}){
@@ -199,10 +223,15 @@
 
         function App(){
             return (
-                <main className="py-28 px-4">
-                  <Calculator>
+                <main className={`
+                  py-28 px-4 sm:px-10
+                  flex flex-col sm:flex-row
+                  items-center sm:items-stretch
+                  gap-2
+                  `}>
+                  <Calculator/>
                     
-                  </Calculator>
+                  <OperationHistory/>
                     
                 </main>
             )
