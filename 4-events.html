@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study of React core concepts</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+                
+    <script type="text/babel">
+
+        function Alert1(){
+
+            function handleAlert1Click(event){
+                console.log(event);
+                alert('Alert 1 clicked!');
+            }
+
+            return (
+                <button type="button" onClick={handleAlert1Click}>
+                    Show Alert 1
+                </button>
+            )
+        }
+
+        function Alert2(){
+            function handleAlert2Click(msg){
+                console.log(event);
+                alert(msg);
+            }
+            return (
+                <button type="button" onClick={() => handleAlert2Click('Alert 2 clicked!')}>
+                    Show Alert 2 Parameter
+                </button>
+            )
+        }
+
+        function Alert3() {
+            
+            function handleInputChange(event) {
+                console.log('Input changed:', event.target.value);
+            }
+
+            function handleAlert3Click(event) {
+                alert(event.target.previousSibling.value);
+            }
+
+            return (
+                <div>
+                <input 
+                    type="text" 
+                    placeholder="Digite algo..." 
+                    onChange={handleInputChange}
+                />
+
+                <button onClick={handleAlert3Click}>Mostrar Alerta 3</button>
+                </div>
+            );
+        }
+       
+        function App(){
+            return (
+                <main>
+                    <Alert1/>
+                    <Alert2/>
+                    <Alert3/>
+                </main>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <App/>
+        )             
+
+    </script>
+    
+</body>
+</html>
