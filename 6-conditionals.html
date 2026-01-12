@@ -20,13 +20,28 @@
         function Counter(){
             const [ counter, setCounter ] = React.useState(0);
 
+            if(counter > 15){
+                return <h1>Counter exceeded 15, component unmounted</h1>
+            }
+
             return (
-                <>
+                <>                    
                     <p>Counter: {counter}</p>
+
                     <br/><br/>
                     <button type="button" onClick={() => setCounter(counter + 1)}>Update Counter</button>
+
                     <br/><br/>
                     <button type="button" onClick={() => setCounter((preValue) => preValue + 1)}>Update Counter Prevalue</button>
+
+                    <br/><br/>
+                    //Conditional Rendering using Ternary Operator
+                    <p>{counter > 5 ? 'Counter is greater than 5' : 'Counter is less than or equal to 5'}</p>
+                    
+                    <br/><br/>
+                    // Conditional Rendering using &&
+                    {counter > 10 && <p>Counter is greater than 10</p>}
+
                 </>
             )
         }
