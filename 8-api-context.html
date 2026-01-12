@@ -39,11 +39,12 @@
 
         function Counter(){
             const [ counter, setCounter ] = React.useState(0);
-            const { saveCount } = React.useContext(CounterContext);
+            const { savedCounts, saveCount } = React.useContext(CounterContext);
 
             return (
                 <>
                     <p>Counter: {counter}</p>
+                    <p>Last Value Saved to Context: {savedCounts[savedCounts.length - 1]  || ''}</p>
                     <button onClick={() => setCounter((preValue) => preValue + 1)}>Update Counter Prevalue</button>
                     <button onClick={() => saveCount(counter)}>Save Counter to Context</button>
                 </>
