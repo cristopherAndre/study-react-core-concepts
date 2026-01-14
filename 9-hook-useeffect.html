@@ -20,23 +20,24 @@
             const [count, setCount] = React.useState(0);
             const [name, setName] = React.useState('');
 
+            // Empty useEffect
+            React.useEffect(() => {
+                console.log('Component mounted');
+
+                return () => {
+                    console.log('Component unmounted');
+                };
+            }, []);
+
 
             // Counter useEffect
             React.useEffect(() => {
-                console.log('Component mounted Count');
-
-                return () => {
-                    console.log('Component unmounted Count');
-                };
+                console.log('Component mounted Count:' , count);
             }, [count]);
 
             // Name useEffect
             React.useEffect(() => {
-                console.log('Component mounted Name');
-
-                return () => {
-                    console.log('Component unmounted Name');
-                };
+                console.log('Component mounted Name:', name);
             }, [name]);
 
             return (
@@ -59,10 +60,14 @@
 
 
         function App(){
+            const [showComponent, setShowComponent] = React.useState(true);
+
             return (
                 <main>
-                    <ExampleComponentUseEffect/>                        
+                    <button onClick={() => setShowComponent(!showComponent)}>Show/Hide Component</button>
+                    {showComponent && <ExampleComponentUseEffect/>}                
                 </main>
+                
             )
         }
 
